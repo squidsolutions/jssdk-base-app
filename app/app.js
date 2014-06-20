@@ -4,10 +4,8 @@ require(['jquery',
 'jssdk/sdk/squid_api',
 'jssdk/sdk/widgets/squid_api_login_widget',
 'jssdk/sdk/widgets/squid_api_status',
-'hbs!templates/hello'], 
-function($, Backbone, config, squid_api, LoginView, StatusView, HelloTemplate) {
-
-    var loginUrl = config.loginUrl;
+'widgets/hello'], 
+function($, Backbone, config, squid_api, LoginView, StatusView, ContentView) {
     
     /*
      * Declare the views 
@@ -16,12 +14,17 @@ function($, Backbone, config, squid_api, LoginView, StatusView, HelloTemplate) {
     var loginView = new LoginView({
         el : $('#login'),
         model : squid_api.model.login,
-        loginUrl : config.loginUrl
+        loginUrl : config.loginUrl,
+        autoShow : true
     });
     
     var statusView = new StatusView({
         el : $('#status'),
         model : squid_api.model.status
+    });
+    
+    var contentView = new ContentView({
+        el : $('#content')
     });
     
     /*
@@ -41,14 +44,6 @@ function($, Backbone, config, squid_api, LoginView, StatusView, HelloTemplate) {
             squid_api.utils.clearLogin();
         }
     });
-    
-    // start here
-    var start = function() {
-        // display hello
-    var jsonData = {"customer" : squid_api.customerId};
-        var html = HelloTemplate(jsonData);
-        $("#hello").html(html);
-    };
 
     /*
      * bootstrapping the APP
@@ -57,17 +52,11 @@ function($, Backbone, config, squid_api, LoginView, StatusView, HelloTemplate) {
     squid_api.model.login.on('change:login', function(model) {
         // performed when login is updated
         if (model.get("login")) {
-            if (squid_api.utils.getParamValue("access_token")) {
-                // update the url to clear the token param
-                try {
-                    window.history.pushState("", "", squid_api.utils.clearParam("access_token"));
-                } catch(e) {
-                    // not supported
-                }
-            }
+            // login ok
+            contentView.model.set({"message" : "Hello, you are logged with a user account on customer "+squid_api.customerId});
             $('.sq-main').show();
-            start();
         } else {
+            // login ko
             $('.sq-main').hide();
         }
     });

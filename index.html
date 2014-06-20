@@ -4,18 +4,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Squid JSSDK base App</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     
 	<!-- Squid App -->
 	<link rel="stylesheet" type="text/css" href="app/style.css">
-	<script src="app/require-config.js"></script>
+	<script src="../jssdk/require-config.js"></script>
+	<script>
+		// specific requireJS config
+		require.baseUrl = "app";
+	</script>
 	<script data-main="app" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.11/require.min.js"></script>
 	<!-- END Squid App -->
 </head>
 <body>
-	<section id="container" class="sq-main">
+	<div class="container" class="sq-main">
 		<span class="small" id="status"></span>
 		<div id="login"></div>
-		<div id="hello"></div>
-	</section>
+		<div id="content"></div>
+	</div>
 </body>
 </html>
