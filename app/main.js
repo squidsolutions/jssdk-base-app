@@ -1,10 +1,4 @@
-require(['jquery',
-'backbone',
-'squid_api',
-'jssdk/sdk/widgets/squid_api_login_widget',
-'jssdk/sdk/widgets/squid_api_status',
-'widgets/hello'], 
-function($, Backbone, squid_api, LoginView, StatusView, ContentView) {
+$( document ).ready(function() {
     
     var loginView, statusView, contentView, config;
     
@@ -12,17 +6,17 @@ function($, Backbone, squid_api, LoginView, StatusView, ContentView) {
      * Declare the views 
      */
      
-    loginView = new LoginView({
-        el : $('#login'),
+    loginView = new squid_api.view.LoginView({
+        el : '#login',
         autoShow : false
     });
     
-    statusView = new StatusView({
-        el : $('#status')
+    statusView = new squid_api.view.StatusView({
+        el : '#status'
     });
     
-    contentView = new ContentView({
-        el : $('#content')
+    contentView = new squid_api.view.ContentView({
+        el : '#content'
     });
     
     /*
@@ -39,7 +33,6 @@ function($, Backbone, squid_api, LoginView, StatusView, ContentView) {
             // login ko
             contentView.model.set({"message" : "Please login"});
         }
-        $('#main').show();
     });
     
     /*

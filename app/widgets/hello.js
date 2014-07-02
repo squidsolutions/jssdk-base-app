@@ -1,4 +1,6 @@
-define(['backbone', 'hbs!templates/hello'], function(Backbone, defaultTemplate) {
+(function (root, factory) {
+    root.squid_api.view.ContentView = factory(root.Backbone, root.squid_api);
+}(this, function (Backbone, squid_api) {
 
     var View = Backbone.View.extend({
         template : null,
@@ -14,7 +16,7 @@ define(['backbone', 'hbs!templates/hello'], function(Backbone, defaultTemplate) 
             if (options.template) {
                 this.template = options.template;
             } else {
-                this.template = defaultTemplate;
+                this.template = app.template.hello;
             }
             // listen for model changes
             this.model.on('change', this.render, this);
@@ -37,4 +39,4 @@ define(['backbone', 'hbs!templates/hello'], function(Backbone, defaultTemplate) 
     });
 
     return View;
-});
+}));
