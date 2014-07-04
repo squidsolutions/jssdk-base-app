@@ -26,6 +26,11 @@ module.exports = function(grunt) {
                 dest : 'dist/main.js',
             }
         },
+        wiredep : {
+            target : {
+                src : [ 'test.html' ],
+            }
+        },
         watch : {
             js : {
                 files : [ 'app/**/*.js', 'app/**/*.hbs' ],
@@ -37,6 +42,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-handlebars');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-wiredep');
 
-    grunt.registerTask('default', [ 'jshint', 'handlebars', 'concat' ]);
+    grunt.registerTask('default',
+            [ 'jshint', 'handlebars', 'concat', 'wiredep' ]);
 };
