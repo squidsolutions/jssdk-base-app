@@ -1,0 +1,21 @@
+{
+  "name": "squid_api_base_app",
+  "version": "1.0.0",
+  "authors": [
+    "obalbous <oba@squid>"
+  ],
+  "main": "dist/main.js",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+      "squid_api": "git@github.com:squidsolutions/jssdk2.git",
+      "squid_api_core_widgets": "git@github.com:squidsolutions/jssdk-core-widgets.git"
+  }
+}
