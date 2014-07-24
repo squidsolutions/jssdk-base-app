@@ -5,7 +5,7 @@
         "node": "0.10.x"
     },
     "scripts": {
-        "start": "grunt"
+        "test": "grunt"
     },
     "devDependencies": {
         "grunt": "^0.4.5",
