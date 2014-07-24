@@ -15,7 +15,7 @@
     "tests"
   ],
   "dependencies": {
-      "squid_api": "git@github.com:squidsolutions/jssdk2.git",
-      "squid_api_core_widgets": "git@github.com:squidsolutions/jssdk-core-widgets.git"
+      "squid_api": "https://github.com/squidsolutions/jssdk2.git",
+      "squid_api_core_widgets": "https://github.com/squidsolutions/jssdk-core-widgets.git"
   }
 }
