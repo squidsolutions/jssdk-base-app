@@ -79,7 +79,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-wiredep-copy');
 
     grunt.registerTask('fast', [ 'handlebars', 'concat', 'copy' ]);
-
-    grunt.registerTask('default', [ 'jshint', 'clean', 'handlebars', 'concat',
-            'copy', 'wiredep', 'wiredepCopy' ]);
+    grunt.registerTask('build', [ 'jshint', 'clean', 'handlebars', 'concat',
+                                    'copy', 'wiredep', 'wiredepCopy' ]);
+    grunt.registerTask('default', [ 'build' ]);
 };
