@@ -1,17 +1,24 @@
 jssdk-base-app
 ==============
 
-Base skeleton App for JSSDK
+Base skeleton App for JSSDK.
+Download a release and use it as a skeleton for your project.
 
 ## running
 
+Install the dependencies
+```
 npm install
-
 bower install
-
-grunt
-
+```
+Trigger builds when code changes
+```
+grunt watch
+````
+View the build results
+```
 open dist/index.html
+`````
 
 ## build process
 
