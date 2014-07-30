@@ -15,6 +15,16 @@ Trigger builds when code changes
 ```
 grunt watch
 ````
+
+Edit the app/main.js file to match your project's settings
+```
+config = {
+  "customerId" : null,
+  "clientId" : null,
+  "projectId" : null,
+};
+````
+
 View the build results
 ```
 open dist/index.html
