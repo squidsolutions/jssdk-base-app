@@ -3,7 +3,7 @@ jssdk-base-app
 
 Base skeleton App for JSSDK. 
 
-Handles user login and displays a status message in a samble widget. 
+Handles user login and displays a status message in a sample widget. 
 Uses a Bootstrap layout. 
 
 Download/Clone a release and use it as a skeleton for your project.
@@ -29,7 +29,7 @@ squid_api.setup({
     "selection" : null
 });
 ````
-    
+
 View the build results
 ```
 open dist/index.html
