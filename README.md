@@ -1,8 +1,12 @@
 jssdk-base-app
 ==============
 
-Base skeleton App for JSSDK.
-Download a release and use it as a skeleton for your project.
+Base skeleton App for JSSDK. 
+
+Handles user login and displays a status message in a sample widget. 
+Uses a Bootstrap layout. 
+
+Download/Clone a release and use it as a skeleton for your project.
 
 ## running
 
@@ -18,11 +22,12 @@ grunt watch
 
 Edit the app/main.js file to match your project's settings
 ```
-config = {
-  "customerId" : null,
-  "clientId" : null,
-  "projectId" : null,
-};
+squid_api.setup({
+    "clientId" : "local",
+    "projectId" : null,
+    "domainId" : null,
+    "selection" : null
+});
 ````
 
 View the build results
