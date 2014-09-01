@@ -2,6 +2,13 @@ $( document ).ready(function() {
     
     var loginView, statusView, contentView, config;
     
+    squid_api.setup({
+        "clientId" : "local",
+        "projectId" : null,
+        "domainId" : null,
+        "selection" : null
+    });
+    
     /*
      * Declare the views 
      */
@@ -27,7 +34,7 @@ $( document ).ready(function() {
         // performed when login is updated
         if (model.get("login")) {
             // login ok
-            contentView.model.set({"message" : "Hello, you are logged with a user account on customer "+squid_api.customerId});
+            contentView.model.set({"message" : "Hello, you are up and running"});
             
         } else {
             // login ko
@@ -38,10 +45,5 @@ $( document ).ready(function() {
     /*
      * Start the App
      */
-    config = {
-        "customerId" : null,
-        "clientId" : null,
-        "projectId" : null,
-    };
-    squid_api.init(config);
+    squid_api.init();
 });
