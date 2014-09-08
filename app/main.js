@@ -42,6 +42,13 @@ $( document ).ready(function() {
         }
     });
     
+    squid_api.model.status.on('change', function(model){
+        // performed when the global status changes
+        if (model.get("status") == model.STATUS_DONE) {
+            $("#main").removeClass("hidden");
+        }
+    });
+    
     /*
      * Start the App
      */
