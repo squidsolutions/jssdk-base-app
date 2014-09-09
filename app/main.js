@@ -3,6 +3,7 @@ $( document ).ready(function() {
     var loginView, statusView, contentView, config;
     
     squid_api.setup({
+        "apiUrl" : "api.squidsolutions.com",
         "clientId" : "local",
         "projectId" : null,
         "domainId" : null,
