@@ -1,10 +1,10 @@
 $( document ).ready(function() {
     
-    var loginView, statusView, contentView, config;
+    var api = api, contentView;
     
-    squid_api.setup({
+    api.setup({
         "apiUrl" : "api.squidsolutions.com",
-        "clientId" : "local",
+        "clientId" : null,
         "projectId" : null,
         "domainId" : null,
         "selection" : null
@@ -14,16 +14,16 @@ $( document ).ready(function() {
      * Declare the views 
      */
      
-    loginView = new squid_api.view.LoginView({
+    new api.view.LoginView({
         el : '#login',
         autoShow : false
     });
     
-    statusView = new squid_api.view.StatusView({
+    new api.view.StatusView({
         el : '#status'
     });
     
-    contentView = new squid_api.view.ContentView({
+    contentView = new api.view.ContentView({
         el : '#content'
     });
     
@@ -31,7 +31,7 @@ $( document ).ready(function() {
      * Controller part
      */
     
-    squid_api.model.login.on('change:login', function(model) {
+    api.model.login.on('change:login', function(model) {
         // performed when login is updated
         if (model.get("login")) {
             // login ok
@@ -43,7 +43,7 @@ $( document ).ready(function() {
         }
     });
     
-    squid_api.model.status.on('change', function(model){
+    api.model.status.on('change', function(model){
         // performed when the global status changes
         if (model.get("status") == model.STATUS_DONE) {
             $("#main").removeClass("hidden");
@@ -53,5 +53,5 @@ $( document ).ready(function() {
     /*
      * Start the App
      */
-    squid_api.init();
+    api.init();
 });
