@@ -1,6 +1,6 @@
 $( document ).ready(function() {
     
-    var api = api, contentView;
+    var api = squid_api, contentView;
     
     api.setup({
         "apiUrl" : "api.squidsolutions.com",
