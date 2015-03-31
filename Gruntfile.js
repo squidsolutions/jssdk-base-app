@@ -6,6 +6,17 @@ module.exports = function(grunt) {
                 force : true
             }
         },
+        sass: {
+            dist: {
+                files: {
+                    'dist/app/style.css': 'app/style.scss'
+                },
+                options: {
+                    sourcemap: 'none',
+                    style: 'compressed'
+                }
+            }
+        },
         clean : {
             all : "dist/"
         },
@@ -36,7 +47,7 @@ module.exports = function(grunt) {
             main : {
                 files : [ {
                     expand : true,
-                    src : [ "app/**", "*.html" ],
+                    src : [ "app/main.js", "*.html", "app/fonts/**",  "bower_components/font-awesome/fonts/*", "bower_components/data_tables/media/images/*", "bower_components/bootstrap/dist/fonts/*" ],
                     dest : 'dist/',
                     rename : function(dest, src) {
                         return dest + src.replace(/\.template.html$/, ".html");
@@ -64,12 +75,26 @@ module.exports = function(grunt) {
         },
         watch : {
             js : {
-                files : [ 'app/**/*.js', 'app/**/*.hbs', 'index.template.html' ],
-                tasks : [ 'default' ]
+                files : [ 'app/**/*.js', 'app/**/*.hbs', 'index.template.html', 'app/style.scss' ],
+                tasks : [ 'build']
+            }
+        },
+        cacheBust: {
+            options: {
+              encoding: 'utf8',
+              algorithm: 'md5',
+              length: 8,
+              deleteOriginals: true
+            },
+            assets: {
+              files: [{
+                src: ['dist/index.html']
+              }]
             }
         }
     });
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-handlebars');
     grunt.loadNpmTasks('grunt-contrib-copy');
@@ -77,9 +102,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-wiredep');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-wiredep-copy');
+    grunt.loadNpmTasks('grunt-cache-bust');
 
-    grunt.registerTask('fast', [ 'handlebars', 'concat', 'copy' ]);
     grunt.registerTask('build', [ 'jshint', 'clean', 'handlebars', 'concat',
-                                    'copy', 'wiredep', 'wiredepCopy' ]);
-    grunt.registerTask('default', [ 'build' ]);
+                                    'copy', 'sass', 'wiredep', 'wiredepCopy']);
+    grunt.registerTask('dist', [ 'build', 'cacheBust' ]);
+
+    grunt.registerTask('default', [ 'dist' ]);
 };
