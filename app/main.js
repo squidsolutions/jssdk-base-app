@@ -1,10 +1,16 @@
 $( document ).ready(function() {
     
-    var api = squid_api, contentView;
-    
+    var api = squid_api, config;
+
     api.setup({
-        "clientId" : "baseapp"
+        "clientId" : "local",
+        "config" : {
+            "project" : "musicbrainz"
+        }
     });
+    
+    // get the config after setup
+    config = api.model.config;
     
     /*
      * Declare the views 
@@ -12,37 +18,42 @@ $( document ).ready(function() {
      
     new api.view.LoginView({
         el : '#login',
-        autoShow : false
+        autoShow : true
     });
     
     new api.view.StatusView({
         el : '#status'
     });
     
-    contentView = new api.view.ContentView({
-        el : '#content'
-    });
-    
+    var content = $("#main-content");
+
     /*
      * Controller part
      */
     
+    // handle the login event
     api.model.login.on('change:login', function(model) {
-        // performed when login is updated
-        if (model.get("login")) {
+        $("#main").removeClass("hidden");
+        var login = model.get("login");
+        if (login) {
             // login ok
-            contentView.model.set({"message" : "Hello, you are up and running"});
-            
+            content.html("Hello "+login);
         } else {
-            // login ko
-            contentView.model.set({"message" : "Please login"});
+            content.html("Please login");
         }
     });
     
-    api.model.status.on('change', function(model){
-        // performed when the global status changes
-        if (model.get("status") == model.STATUS_DONE) {
-            $("#main").removeClass("hidden");
+    // handle project
+    api.model.project.on('change', function(project) {
+        if (project) {
+            content.append("\nThe current Project fetched : "+project.get("name"));
+        }
+    });
+
+    // handle configuration
+    config.on('change', function(config) {
+        if (config) {
+            content.append("\nThe current app Config : "+JSON.stringify(config));
         }
     });
     
