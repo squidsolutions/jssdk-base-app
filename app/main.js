@@ -3,11 +3,8 @@ $( document ).ready(function() {
     var api = squid_api, contentView;
     
     api.setup({
-        "apiUrl" : "api.squidsolutions.com",
-        "clientId" : null,
-        "projectId" : null,
-        "domainId" : null,
-        "selection" : null
+        "clientId" : "local",
+        "projectId" : "musicbrainz"
     });
     
     /*
