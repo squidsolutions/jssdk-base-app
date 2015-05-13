@@ -12,8 +12,8 @@ It uses the standard stack :
 * [Grunt](http://gruntjs.com/) for building the app.
 
 Along with our JSSDK components :  
-* squidsolutions/jssdk2
-* squidsolutions/jssdk-core-widgets
+* [JSSDK](https://github.com/squidsolutions/jssdk2)
+* [Core Widgets](https://github.com/squidsolutions/jssdk-core-widgets)
 
 ## running
 
@@ -47,4 +47,4 @@ View the build results
 open dist/index.html
 `````
 
-Now you can follow our [tutorials](https://api.squidsolutions.com/wp/api-tutorial/) to deep dive into analytical apps devellopment
+Now you can follow our [tutorials](https://api.squidsolutions.com/wp/api-tutorial/) to deep dive into analytical apps development
