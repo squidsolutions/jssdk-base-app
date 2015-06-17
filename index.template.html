@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Squid JSSDK base App</title>
+	<title>JSSDK Tutorial 1</title>
 	<link rel="stylesheet" type="text/css" href="app/style.css">
 	<!-- bower:css -->
 	<!-- endbower -->
@@ -15,18 +15,54 @@
 <body>
 	<div class="container" id="header">
 		<div class="row">
-			<div class="col-md-9">
+			<div class="col-md-2">
+				<div id="project"></div>
+			</div>
+			<div class="col-md-2">
+				<div id="domain"></div>
+			</div>
+			<div class="col-md-6">
 				<div id="status"></div>
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-2">
 				<div id="login"></div>
 			</div>
 		</div>
 	</div>
-	<div class="container hidden" id="main">
+	<div class="container" id="main">
 		<div class="row">
 			<div class="col-md-12">
-				<h2>Base App</h2>
+				<h2>Sample App</h2>
+		    </div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 col-xs-3 col-md-2">
+			    <div id="selection"></div>
+			</div>
+			<div class="col-sm-9 col-xs-9 col-md-10">
+			    <div id="selected"></div>
+			</div>
+	   	</div>
+	    <div class="collapse" id="filters"></div>
+		<div class="row">
+		    <div class="col-md-4">
+				<div id="date"></div>
+		    </div>
+		    <div class="col-md-4">
+		    	<div id="dimension"></div>
+		    </div>
+		    <div class="col-md-4">
+		    	<div id="metric"></div>
+		    </div>
+		</div>
+		<div class="row">
+		    <div class="col-md-12">
+				<div id="table"></div>
+		    </div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div>Config :</div>
 				<pre id="main-content"></pre>
 		    </div>
 		</div>

@@ -1,61 +1,61 @@
 $( document ).ready(function() {
     
-    var api = squid_api, config;
-
-    api.setup({
-        "clientId" : "local",
-        "config" : {
-            "project" : "musicbrainz"
-        }
+    /*
+     * Setup
+     */
+    var api = squid_api.setup({
+        "clientId" : "local"
     });
     
-    // get the config after setup
-    config = api.model.config;
+    /*
+     * Controller part
+     */
+    
+    // analysis controller
+    var analysis = new api.controller.AnalysisContoller();
+    
+    // filters controller
+    new api.controller.FiltersContoller();
     
     /*
      * Declare the views 
      */
      
-    new api.view.LoginView({
-        el : '#login',
-        autoShow : true
+    new api.view.LoginView();
+    
+    new api.view.StatusView();
+    
+    new api.view.ProjectSelector({
+        el : '#project'
     });
     
-    new api.view.StatusView({
-        el : '#status'
+    new api.view.DomainSelector({
+        el : '#domain'
     });
     
-    var content = $("#main-content");
+    new api.view.PeriodSelectionView({
+        el : '#date'
+    });
+    
+    new api.view.MetricSelectorView({
+        el : '#metric'
+    });
+    
+    new api.view.DimensionSelector({
+        el : '#dimension'
+    });
+    
+    new api.view.DataTableView ({
+        el : '#table',
+        model : analysis.model,
+    });
+    
+    new api.view.CategoricalView({
+        el : '#selection',
+        filterPanel : '#filters',
+        filterSelected : '#selected'
+    });
 
-    /*
-     * Controller part
-     */
-    
-    // handle the login event
-    api.model.login.on('change:login', function(model) {
-        $("#main").removeClass("hidden");
-        var login = model.get("login");
-        if (login) {
-            // login ok
-            content.html("Hello "+login);
-        } else {
-            content.html("Please login");
-        }
-    });
-    
-    // handle project
-    api.model.project.on('change', function(project) {
-        if (project) {
-            content.append("\nThe current Project fetched : "+project.get("name"));
-        }
-    });
-
-    // handle configuration
-    config.on('change', function(config) {
-        if (config) {
-            content.append("\nThe current app Config : "+JSON.stringify(config));
-        }
-    });
     
     /*
      * Start the App

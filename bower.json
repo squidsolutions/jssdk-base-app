@@ -17,6 +17,8 @@
   "dependencies": {
       "squid_api": "https://github.com/squidsolutions/jssdk2.git",
       "squid_api_core_widgets": "https://github.com/squidsolutions/jssdk-core-widgets.git",
+      "squid_api_data_widgets": "https://github.com/squidsolutions/jssdk-data-widgets.git#master",
+      "squid_api_filters_widget": "https://github.com/squidsolutions/jssdk-filters-widget.git#master",
       "bootstrap":"3"
   }
 }
